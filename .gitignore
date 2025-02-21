@@ -2,3 +2,4 @@ h5/
 rmm_log.txt
 .ipynb_checkpoints/
 __pycache__/
+zarr/
