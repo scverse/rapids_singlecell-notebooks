@@ -1,0 +1,7 @@
+h5/
+rmm_log.txt
+.ipynb_checkpoints/
+__pycache__/
+zarr/
+.DS_Store
+._DS_Store
