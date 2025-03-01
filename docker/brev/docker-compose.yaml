@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    image: nvcr.io/nvidia/rapidsai/base:24.12-cuda12.5-py3.12
+    pull_policy: always
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    shm_size: 1g
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+        EXTRA_CONDA_PACKAGES: "cudnn cutensor cusparselt"
+        EXTRA_PIP_PACKAGES: "decoupler omnipath gdown wget squidpy cellxgene_census rapids-singlecell jupyterlab"
+    ports:
+      - "0.0.0.0:8888:8888"      # JupyterLab
+      - "0.0.0.0:8787:8787"      # Dask dashboard
+      - "0.0.0.0:8786:8786"      # Dask scheduler
+    volumes:
+      - /home/ubuntu/rapids_singlecell-notebooks:/notebooks
+    user: root
+    working_dir: /notebooks
+    entrypoint: ["/home/rapids/entrypoint.sh"]
+    command: python -m jupyter lab --allow-root --ip=0.0.0.0 --no-browser --NotebookApp.token='' --NotebookApp.password='' --notebook-dir=/notebooks
+    restart: unless-stopped
