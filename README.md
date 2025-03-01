@@ -6,8 +6,10 @@
 
 
 
-This repository houses the notebooks made to run on [RAPIDS-singlecell](https://rapids-singlecell.readthedocs.io/en/latest/), a GPU accelerated library from [SCVerse](https://github.com/scverse) and [Intron7](https://github.com/Intron7).
-The goal is of this repository is to help users be able to try out and explore many different capabilities of RAPIDS-singlecell on a 250k and larger cell data set on thier own CUDA capabile GPU systems or a on the quick deploy capability of Brev.dev Launchables
+This repository houses the notebooks made to run on [RAPIDS-singlecell](https://rapids-singlecell.readthedocs.io/en/latest/), a GPU accelerated library developed by [scverse](https://github.com/scverse).
+The goal is of this repository is to help users be able to try out and explore many different capabilities of RAPIDS-singlecell on a 250k and larger cell data set on thier own CUDA capabile GPU systems or a on the quick deploy capability of Brev.dev Launchables.  
+
+If you like these notebooks and this GPU accelerated capability, and want to support scverse's efforts, please [learn more about them here](https://scverse.org/about/) as well as [consider joining their community](https://scverse.org/join/).
 
 # Overview
 
@@ -29,7 +31,7 @@ For those who are new to doing basic analysis for single cell data, [Notebook 01
 
 | Notebook         | Description |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [00_DO_FIRST](00_DO_FIRST.ipynb)   | This notebook downloads all and conditions all the data that you will need for the other notebooks<br>**PLEASE RUN THIS FIRST NOTBEOOK ON A NEW DEPLOYMENT**                                                                                                            |
+| [00_DO_FIRST](00_DO_FIRST.ipynb)   | This notebook downloads all and conditions all the data that you will need for the other notebooks<br>**PLEASE RUN THIS FIRST NOTEBOOK ON A NEW DEPLOYMENT**                                                                                                            |
 | [01_demo_gpu](01_demo_gpu.ipynb)   | End to end workflow, where we understand the cells, run ETL on the data set then visiualize and explore the resiults. <br>This tutorial is good for all users |
 | [02_decoupler](02_decoupler.ipynb)   | This notebook is an overview of methods that can be used to investigate transcriptional regulation |
 | [03_demo_gpu-PR](03_demo_gpu-PR.ipynb)  | End to end workflow, like [01_demo_gpu](01_demo_gpu.ipynb), but uses pearson residuals for normalization. |
