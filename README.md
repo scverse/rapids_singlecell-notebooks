@@ -21,8 +21,7 @@ This repository contains a diverse set of notebooks to help get anyone started u
 
 
 
-![layout architecture](https://github.com/tjchennv/rapids_singlecell-notebooks/blob/main/assets/scdiagram.png)
-
+![layout architecture](https://github.com/tjchennv/rapids_singlecell-notebooks/raw/main/assets/scdiagram.png)
 
 
 The numbering is a suggested exploration flow.  After the user loads the data using [00_DO_FIRST](00_DO_FIRST.ipynb), they can choose any notebook to get started, as long as they have the GPU resources to run the notebook.
