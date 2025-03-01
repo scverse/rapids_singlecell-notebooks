@@ -35,7 +35,7 @@ For those who are new to doing basic analysis for single cell data, [Notebook 01
 | [03_demo_gpu-PR](03_demo_gpu-PR.ipynb)  | End to end workflow, like [01_demo_gpu](01_demo_gpu.ipynb), but uses pearson residuals for normalization. |
 | [04_spatial_autocorr](04_spatial_autocorr.ipynb) | An introduction to spatial transcriptomics analysis and visualization | 
 | [05_out-of-core](05_out-of-core.ipynb) | In this notebook, we show the scalability of the analysis to 11M cells easily by using Dask.<br>**Requires 24GB GPU** | 
-| [06_multi_gpu_show](06-multi_gpu_show.ipynb) | This notebook enhances the 11M cell dataset analysis with dask without exceeding memory limits.  <br>It fully scales to utilize all available GPUs, uses chunk-based execution, and efficiently manages memory<br>**Requires 8x A100s or better.  For all other GPUs systems, please run [05_out-of-core](05_out-of-core.ipynb) instead**| 
+| [06_multi_gpu_show](06_multi_gpu_show.ipynb) | This notebook enhances the 11M cell dataset analysis with dask without exceeding memory limits.  <br>It fully scales to utilize all available GPUs, uses chunk-based execution, and efficiently manages memory<br>**Requires 8x A100s or better.  For all other GPUs systems, please run [05_out-of-core](05_out-of-core.ipynb) instead**| 
 
 <br>
 
