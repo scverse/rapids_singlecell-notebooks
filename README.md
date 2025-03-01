@@ -21,7 +21,7 @@ This repository contains a diverse set of notebooks to help get anyone started u
 
 
 
-![layout architecture](./assets/scdiagram.png)
+![layout architecture](https://github.com/tjchennv/rapids_singlecell-notebooks/blob/main/assets/scdiagram.png)
 
 
 
