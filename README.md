@@ -54,7 +54,7 @@ Please click this button to deploy this Repo using Brev.dev's Launchables
 ### 1. System Requirements
 All provisioned systems need to be RAPIDS capable. Here's what is required:
 
-<i class="fas fa-microchip"></i> **GPU:** NVIDIA Volta™ or higher with [compute capability](https://developer.nvidia.com/cuda-gpus){: target="_blank"} 7.0+
+<i class="fas fa-microchip"></i> **GPU:** NVIDIA Volta™ or higher with [compute capability](https://developer.nvidia.com/cuda-gpus) 7.0+
 - For most of the notebooks, we recommend a **GPU with 24 GB VRAM or more**, due to the dataset size, such as the **L40S**, which can be quickly deployed here.  Other options are:
   - H100
   - A100
