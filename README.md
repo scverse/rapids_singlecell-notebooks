@@ -1,29 +1,101 @@
-# rapids-singlecell notebooks
-
-This repository houses the notebooks from [rapids-singlecell](https://rapids-singlecell.readthedocs.io/en/latest/)
-The goal is to help users be able to try many different features from RAPIDS-singlecell on a 250k cell data set.
-
-## Overview
-This repository contains a diverse set of notebooks to help get anyone started using RAPIDS-singlecell. Although they are numbered, a user can chose to load data using 00, and pick any notebook to get started.
-
-For those who are new to doing basic analysis for single cell data, Notebook 01 is the best place to start, where it will walk a user through the steps of data preprocessing, cleanup, visualization, and investigation.
-
-Notebooks 05 and 06 are for those looking to perform analysis on very large data sets.
-
-Below is a high level description of each notebook:
-Notebook 01 - End to end workflow, a tutorial good for all users
-Notebook 02 - Transcriptional regulation examples, good for advanced scientific users
-Notebook 03 - Normalization using pearson resituals, an augmentation for Notebook 1
-Notebook 04 - An introduction to spatial transcriptomics analysis and visualization
-Notebook 05 - Scale analysis to 11M cells easily and quickly leveraging Dask
-Notebook 06 - Running at unprecented speed using 8XH100 GPUs
+# <div align="left"><img src="https://rapids.ai/assets/images/rapids_logo.png" width="90px"/>&nbsp; <div align="left"><img src="https://canada1.discourse-cdn.com/flex035/uploads/forum11/original/1X/dfb6d71c9b8deb73aa10aa9bc47a0f8948d5304b.png" width="90px"/>&nbsp;
+# **RAPIDS-singlecell Tutorial Notebooks**
 
 
-## Notebook 00 - Data loading
+---
 
-Download the required data for this notebook
 
-## Notebook 01 - End to end workflow example
+
+This repository houses the notebooks made to run on [RAPIDS-singlecell](https://rapids-singlecell.readthedocs.io/en/latest/), a GPU accelerated library from [SCVerse](https://github.com/scverse) and [Intron7](https://github.com/Intron7).
+The goal is of this repository is to help users be able to try out and explore many different capabilities of RAPIDS-singlecell on a 250k and larger cell data set on thier own CUDA capabile GPU systems or a on the quick deploy capability of Brev.dev Launchables
+
+# Overview
+
+
+---
+
+
+This repository contains a diverse set of notebooks to help get anyone started using RAPIDS-singlecell. 
+
+
+
+![layout architecture](./assets/scdiagram.png)
+
+
+
+The numbering is a suggested exploration flow.  After the user loads the data using [00_DO_FIRST](00_DO_FIRST.ipynb), they can choose any notebook to get started, as long as they have the GPU resources to run the notebook.
+
+For those who are new to doing basic analysis for single cell data, [Notebook 01: demo_gpu]((01_demo_gpu.ipynb)) is the best place to start, where it will walk a user through the steps of data preprocessing, cleanup, visualization, and investigation.
+
+| Notebook         | Description |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [00_DO_FIRST](00_DO_FIRST.ipynb)   | This notebook downloads all and conditions all the data that you will need for the other notebooks<br>**PLEASE RUN THIS FIRST NOTBEOOK ON A NEW DEPLOYMENT**                                                                                                            |
+| [01_demo_gpu](01_demo_gpu.ipynb)   | End to end workflow, where we understand the cells, run ETL on the data set then visiualize and explore the resiults. <br>This tutorial is good for all users |
+| [02_decoupler](02_decoupler.ipynb)   | This notebook is an overview of methods that can be used to investigate transcriptional regulation |
+| [03_demo_gpu-PR](03_demo_gpu-PR.ipynb)  | End to end workflow, like [01_demo_gpu](01_demo_gpu.ipynb), but uses pearson residuals for normalization. |
+| [04_spatial_autocorr](04_spatial_autocorr.ipynb) | An introduction to spatial transcriptomics analysis and visualization | 
+| [05_out-of-core](05_out-of-core.ipynb) | In this notebook, we show the scalability of the analysis to 11M cells easily by using Dask.<br>**Requires 24GB GPU** | 
+| [06_multi_gpu_show](06-multi_gpu_show.ipynb) | This notebook enhances the 11M cell dataset analysis with dask without exceeding memory limits.  <br>It fully scales to utilize all available GPUs, uses chunk-based execution, and efficiently manages memory<br>**Requires 8x A100s or better.  For all other GPUs systems, please run [05_out-of-core](05_out-of-core.ipynb) instead**| 
+
+<br>
+
+# Deploying this Repository
+
+---
+
+This repo is made to run as Brev.dev's Launchables, or a machine you own with a local CUDA compatible GPU.  
+## Deploy Using [Brev](brev.dev)
+Please click this button to deploy this Repo using Brev.dev's Launchables
+
+>>DEPLOY BUTTON
+
+## Deploy on a CUDA compatible GPU system
+
+### 1. System Requirements
+All provisioned systems need to be RAPIDS capable. Here's what is required:
+
+<i class="fas fa-microchip"></i> **GPU:** NVIDIA Volta™ or higher with [compute capability](https://developer.nvidia.com/cuda-gpus){: target="_blank"} 7.0+
+- For most of the notebooks, we recommend a **GPU with 24 GB VRAM or more**, due to the dataset size, such as the **L40S**, which can be quickly deployed here.  Other options are:
+  - H100
+  - A100
+  - A10
+  - L4
+  - GH200
+Notebook 06 requires a large multigpu system.  Notebook 05 is similar and can be run on one of the GPUs above.
+
+
+<i class="fas fa-desktop"></i> **OS:**
+- <i class="fas fa-check-circle"></i> Linux distributions with `glibc>=2.28` (released in August 2018), which include the following:
+  - [Arch Linux](https://archlinux.org/), minimum version 2018-08-02
+  - [Debian](https://www.debian.org/), minimum version 10.0
+  - [Fedora](https://fedoraproject.org/), minimum version 29
+  - [Linux Mint](https://linuxmint.com/), minimum version 20
+  - [Rocky Linux](https://rockylinux.org/) / [Alma Linux](https://almalinux.org/) / [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux), minimum version 8
+  - [Ubuntu](https://ubuntu.com/), minimum version 20.04
+- <i class="fas fa-check-circle"></i> Windows 11 using a [WSL2 specific install](https://docs.rapids.ai/install/#wsl2)
+
+<i class="fas fa-download text-purple"></i> **CUDA 12 & latest NVIDIA Drivers:** Install the latest drivers for your system [HERE](https://www.nvidia.com/en-us/drivers/)
+
+ **Note**: RAPIDS is tested with and officially supports the versions listed above. Newer CUDA and driver versions may also work with RAPIDS. See [CUDA compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/index.html) for details.
+
+<i class="fas fa-download text-purple"></i> **Other Required Software**: Pip, Conda, or Docker installed to install the Libraries
+### 2. Clone this repo:
+>>GIT CLONE LINK
+### 3. Install RAPIDS Singlecell Libraries
+Please refer to the [RAPIDS Singlecell Install Guide](https://rapids-singlecell.readthedocs.io/en/latest/Installation.html) to install using [pip](https://rapids-singlecell.readthedocs.io/en/latest/Installation.html#pypi), [Conda](https://rapids-singlecell.readthedocs.io/en/latest/Installation.html#conda), or [Docker](https://rapids-singlecell.readthedocs.io/en/latest/Installation.html#docker)
+
+
+# Detailed Overview of the Notebooks
+
+
+---
+
+
+### **Notebook 00: DO_FIRST - Data loading**
+
+Downloads the required data for this notebook
+
+### **Notebook 01: demo_gpu- End to End Workflow Example**
 
 By the completion of this notebook, a user will be able to do the following:
 
@@ -64,15 +136,15 @@ By the completion of this notebook, a user will be able to do the following:
     - Trajectory analysis
         - Implement a diffusion map to understand the progress of cell types
 
-## Notebook 02 - Transcriptional regulation examples
+### **Notebook 02: decoupler- Transcriptional regulation examples**
 
 This is an overview of methods that can be used to investigate transcriptional regulation. Although the tutorial does not dive deeply into these models, the notebook is used to reflect a difference in speed that is benefitted by GPU.
 
-## Notebook 03 - A different way to normalize
+### **Notebook 03: demo_gpu-PR - A different way to normalize**
 
 By the completion of this notebook, a user will be able to remove unwanted sources of variation using Pearson Residuals to normalize. This is a different approach to analysis from Notebook 01. After filtering, we introduce a normalization step toa address the potential issues in how we previously removed unwanted sources of variation.
 
-## Notebook 04 - Visualizing and investigating spatial transcriptomics data
+### **Notebook 04: spatial_autocorr - Visualizing and investigating spatial transcriptomics data**
 
 By the completion of this notebook, a user will be able to do the following:
 - Compute spatial autocorrelation, which represents how gene expression levels are spatially distributed across tissue sections.
@@ -80,7 +152,7 @@ By the completion of this notebook, a user will be able to do the following:
 - Compute two metrics using Moran's I (better for global structures) and Geary's C (better for local structures)
 - Explore the results visually by plotting the expression of genes Mbp (myelin-associated) and Nrgn (neuronal marker)
 
-## Notebook 05 - Scale analysis to 11M cells easily and quickly leveraging Dask
+### **Notebook 05: out-of-core - Scale analysis to 11M cells easily and quickly leveraging Dask**
 
 By the completion of this notebook, a user will be able to do the following:
 - Create a local DASK cluster
@@ -90,15 +162,9 @@ By the completion of this notebook, a user will be able to do the following:
 - Scale gene expression
 - Compute PCA using GPU acceleration
 
-## Notebook 06 - Scale analysis to 11M cells easily and quickly leveraging Dask
+### **Notebook 06: multi_gpu_show - Scale analysis to 11M cells easily and quickly leveraging Dask**
 
 By the completion of this notebook, a user will be able to perform the same steps as Notebook 05, but with the following:
 - Process massive single-cell datasets without exceeding memory limits
 - Fully utilize all available GPUs, scaling performance across multiple devices
 - Enable chunk-based execution, efficiently managing memory by loading only necessary data
-
-
-
-
-
-
