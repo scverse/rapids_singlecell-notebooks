@@ -6,7 +6,7 @@
 
 
 
-This repository houses the notebooks made to run on [RAPIDS-singlecell](https://rapids-singlecell.readthedocs.io/en/latest/), a GPU accelerated library developed by [scverse](https://github.com/scverse).
+This repository houses the notebooks made to run on [RAPIDS-singlecell](https://rapids-singlecell.readthedocs.io/en/latest/), a GPU accelerated library developed by [scverse®](https://github.com/scverse).
 The goal is of this repository is to help users be able to try out and explore many different capabilities of RAPIDS-singlecell on a 250k and larger cell data set on thier own CUDA capabile GPU systems or a on the quick deploy capability of Brev.dev Launchables.  
 
 If you like these notebooks and this GPU accelerated capability, and want to support scverse's efforts, please [learn more about them here](https://scverse.org/about/) as well as [consider joining their community](https://scverse.org/join/).
