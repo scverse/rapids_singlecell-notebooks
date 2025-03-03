@@ -17,7 +17,7 @@ services:
               capabilities: [gpu]
     environment:
         EXTRA_CONDA_PACKAGES: "cudnn cutensor cusparselt"
-        EXTRA_PIP_PACKAGES: "decoupler omnipath gdown wget squidpy cellxgene_census rapids-singlecell jupyterlab"
+        EXTRA_PIP_PACKAGES: "decoupler omnipath gdown wget rapids-singlecell jupyterlab squidpy=1.6.3 zarr=2.18.* cellxgene-census=1.16.2"
     ports:
       - "0.0.0.0:8888:8888"      # JupyterLab
       - "0.0.0.0:8787:8787"      # Dask dashboard
