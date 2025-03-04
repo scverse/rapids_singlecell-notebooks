@@ -7,7 +7,7 @@
 
 
 This repository houses the notebooks made to run on [RAPIDS-singlecell](https://rapids-singlecell.readthedocs.io/en/latest/), a GPU accelerated library developed by [scverse®](https://github.com/scverse).
-The goal is of this repository is to help users be able to try out and explore many different capabilities of RAPIDS-singlecell on a 250k and larger cell data set on thier own CUDA capabile GPU systems or a on the quick deploy capability of Brev.dev Launchables.  
+The goal is of this repository is to help users be able to try out and explore many different capabilities of RAPIDS-singlecell on cell datasets ranging from **250 thousand to 11 million cells** on thier own CUDA capabile GPU systems or on an instance of the quick deploy capability of Brev.dev Launchables.  
 
 If you like these notebooks and this GPU accelerated capability, and want to support scverse's efforts, please [learn more about them here](https://scverse.org/about/) as well as [consider joining their community](https://scverse.org/join/).
 
@@ -24,19 +24,20 @@ This repository contains a diverse set of notebooks to help get anyone started u
 ![layout architecture](https://github.com/tjchennv/rapids_singlecell-notebooks/raw/main/assets/scdiagram.png)
 
 
-The numbering is a suggested exploration flow.  After the user loads the data using [00_DO_FIRST](00_DO_FIRST.ipynb), they can choose any notebook to get started, as long as they have the GPU resources to run the notebook.
+The outline below is a suggested exploration flow.  Unless otherwise noted, you can choose any notebook to get started, as long as you have the GPU resources to run the notebook.
 
-For those who are new to doing basic analysis for single cell data, [Notebook 01: demo_gpu]((01_demo_gpu.ipynb)) is the best place to start, where it will walk a user through the steps of data preprocessing, cleanup, visualization, and investigation.
+For those who are new to doing basic analysis for single cell data, the end to end analysis of [01_demo_gpu_e2e](01_demo_gpu_e2e.ipynb) is the best place to start, where you are walked through the steps of data preprocessing, cleanup, visualization, and investigation.
 
 | Notebook         | Description |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [00_DO_FIRST](00_DO_FIRST.ipynb)   | This notebook downloads all and conditions all the data that you will need for the other notebooks<br>**PLEASE RUN THIS FIRST NOTEBOOK ON A NEW DEPLOYMENT**                                                                                                            |
-| [01_demo_gpu](01_demo_gpu.ipynb)   | End to end workflow, where we understand the cells, run ETL on the data set then visiualize and explore the resiults. <br>This tutorial is good for all users |
-| [02_decoupler](02_decoupler.ipynb)   | This notebook is an overview of methods that can be used to investigate transcriptional regulation |
-| [03_demo_gpu-PR](03_demo_gpu-PR.ipynb)  | End to end workflow, like [01_demo_gpu](01_demo_gpu.ipynb), but uses pearson residuals for normalization. |
-| [04_spatial_autocorr](04_spatial_autocorr.ipynb) | An introduction to spatial transcriptomics analysis and visualization | 
-| [05_out-of-core](05_out-of-core.ipynb) | In this notebook, we show the scalability of the analysis to 11M cells easily by using Dask.<br>**Requires 24GB GPU** | 
-| [06_multi_gpu_show](06_multi_gpu_show.ipynb) | This notebook enhances the 11M cell dataset analysis with dask without exceeding memory limits.  <br>It fully scales to utilize all available GPUs, uses chunk-based execution, and efficiently manages memory<br>**Requires 8x A100s or better.  For all other GPUs systems, please run [05_out-of-core](05_out-of-core.ipynb) instead**| 
+| [01_demo_gpu_e2e](01_demo_gpu_e2e.ipynb)   | End to end workflow, where we understand the cells, run ETL on the data set then visiualize and explore the resiults. <br>This tutorial is good for all users |
+| [02_decoupler](02_decoupler.ipynb)   | This notebook continues from the outputs of [01_demo_gpu_e2e](01_demo_gpu_e2e.ipynb) as an overview of methods that <br>can be used to investigate transcriptional regulation |
+| [demo_gpu_e2e_with_PR](demo_gpu_e2e_with_PR.ipynb)  | End to end workflow, like [01_demo_gpu_e2e](01_demo_gpu_e2e.ipynb), but uses pearson residuals for normalization. |
+| [spatial_autocorr](spatial_autocorr.ipynb) | An introduction to spatial transcriptomics analysis and visualization | 
+| [out-of-core_processing](out-of-core_processing.ipynb) | In this notebook, we show the scalability of the analysis toof up to 11M cells easily by using Dask.<br>**Requires a 48GB GPU** | 
+| [multi_gpu_large_data_showcase](multi_gpu_large_data_showcase.ipynb) | This notebook enhances the 11M cell dataset analysis with dask without exceeding memory limits.  <br>It fully scales to utilize all available GPUs, uses chunk-based execution, and efficiently manages memory<br>**Requires 8x A100s or better.  For all other GPUs systems, please run [out-of-core_processing](out-of-core_processing.ipynb) instead**| 
+| [demo_gpu-seuratv3](demo_gpu-seuratv3.ipynb) | In this notebook, show diveristy in capabiliy by run a similar workflow to [01_demo_gpu_e2e](01_demo_gpu_e2e.ipynb), but on brain cells | 
+| [demo_gpu-seuratv3-brain-1M](demo_gpu-seuratv3-brain-1M.ipynb) | In this notebook, we scale up the analysis of [demo_gpu-seuratv3](demo_gpu-seuratv3.ipynb) to 1 million brain cells.<br>**Requires an 80GB GPU, like an H100** | 
 
 <br>
 
@@ -56,13 +57,18 @@ Please click this button to deploy this Repo using Brev.dev's Launchables
 All provisioned systems need to be RAPIDS capable. Here's what is required:
 
 <i class="fas fa-microchip"></i> **GPU:** NVIDIA Volta™ or higher with [compute capability](https://developer.nvidia.com/cuda-gpus) 7.0+
-- For most of the notebooks, we recommend a **GPU with 24 GB VRAM or more**, due to the dataset size, such as the **L40S**, which can be quickly deployed here.  Other options are:
-  - H100
-  - A100
-  - A10
-  - L4
+- For most of the notebooks, we recommend a **GPU with 24 GB VRAM or more**, due to the dataset size, such as the **L40S**, which can be quickly deployed here.  Some other common GPU options found in your workstations or favortie cloud service providers are:
+  - A/H/B100
   - GH200
-Notebook 06 requires a large multigpu system.  Notebook 05 is similar and can be run on one of the GPUs above.
+  - L40s
+  - A10
+  - A5000 or better
+  - A4000 ADA or better
+  - 5090
+  - 4090
+  - 3090
+
+The [multi_gpu_large_data_showcase](multi_gpu_large_data_showcase.ipynb) and the [demo_gpu-seuratv3-brain-1M](demo_gpu-seuratv3-brain-1M.ipynb) requires a large multigpu system.  The [out-of-core_processing](out-of-core_processing.ipynb) notebook, even using the 11 million cell dataset, and the [demo_gpu-seuratv3](demo_gpu-seuratv3.ipynb) are respectively similar and can be run on one of the GPUs above, but a 48GB GPU is recommended.
 
 
 <i class="fas fa-desktop"></i> **OS:**
