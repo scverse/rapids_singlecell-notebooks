@@ -5,3 +5,4 @@ __pycache__/
 zarr/
 .DS_Store
 ._DS_Store
+data
